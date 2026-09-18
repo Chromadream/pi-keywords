@@ -1,0 +1,58 @@
+{
+	"name": "@mirakurunchan/pi-keywords",
+	"version": "0.1.0",
+	"description": "OpenCode-style command aliases for Pi, such as /exit, /clear, and /models.",
+	"type": "module",
+	"license": "MIT",
+	"author": "Jonathan Nicholas <jonicrecis@gmail.com>",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Chromadream/pi-keywords.git"
+	},
+	"homepage": "https://github.com/Chromadream/pi-keywords#readme",
+	"bugs": {
+		"url": "https://github.com/Chromadream/pi-keywords/issues"
+	},
+	"keywords": [
+		"pi-package",
+		"pi-extension",
+		"opencode",
+		"aliases",
+		"pi"
+	],
+	"engines": {
+		"node": ">=22.19.0"
+	},
+	"pi": {
+		"extensions": [
+			"./extensions/index.ts"
+		]
+	},
+	"peerDependencies": {
+		"@earendil-works/pi-agent-core": "*",
+		"@earendil-works/pi-coding-agent": "*",
+		"@earendil-works/pi-tui": "*",
+		"typebox": "*"
+	},
+	"scripts": {
+		"test": "node --experimental-strip-types test/aliases.test.mts && node --experimental-strip-types test/registration.test.mts",
+		"typecheck": "tsc --noEmit",
+		"prepublishOnly": "npm run typecheck && npm test"
+	},
+	"devDependencies": {
+		"@earendil-works/pi-agent-core": "0.85.1",
+		"@earendil-works/pi-coding-agent": "0.85.1",
+		"@earendil-works/pi-tui": "0.85.1",
+		"@types/node": "24.13.5",
+		"typebox": "1.3.33",
+		"typescript": "5.9.3"
+	},
+	"files": [
+		"extensions",
+		"README.md",
+		"LICENSE"
+	],
+	"publishConfig": {
+		"access": "public"
+	}
+}
