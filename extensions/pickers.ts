@@ -74,7 +74,9 @@ export async function pickSession(ctx: ExtensionCommandContext): Promise<void> {
 	const now = new Date();
 	const currentFile = ctx.sessionManager.getSessionFile();
 	const labels = ordered.map((session) => formatSessionLabel(session, now));
-	const options = labels.map((label, index) => (ordered[index]?.path === currentFile ? `${label}${CURRENT_MARKER}` : label));
+	const options = labels.map((label, index) =>
+		ordered[index]?.path === currentFile ? `${label}${CURRENT_MARKER}` : label,
+	);
 
 	const choice = await ctx.ui.select("Switch session", options);
 	if (choice === undefined) return;
